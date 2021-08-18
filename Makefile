@@ -1,11 +1,14 @@
-test_timer: timer.o mytimer.o
-	gcc -o test_timer timer.o mytimer.o -lpthread 
+test_timer: timer.o libtimer.o
+	${CROSS_COMPILE}gcc -o test_timer timer.o libtimer.o -lpthread
 
 timer.o: timer.c
-	gcc -c timer.c
+	${CROSS_COMPILE}gcc -c timer.c
 
-mytimer.o: mytimer.c
-	gcc -c mytimer.c
+libtimer.a: libtimer.o
+	${CROSS_COMPILE}ar rcs libtimer.a libtimer.o
+
+libtimer.o: libtimer.c
+	${CROSS_COMPILE}gcc -c libtimer.c
 
 clean:
-	rm *.o test_timer
+	rm *.o *.a test_timer

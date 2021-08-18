@@ -3,22 +3,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "mytimer.h"
+#include <unistd.h>
+#include "libtimer.h"
 
 void time_handler1(size_t timer_id, void * user_data)
 {
-    printf("Single shot timer expired.(%d)\n", timer_id);
+    printf("Single shot timer expired.(%ld)\n", timer_id);
 }
 
 void time_handler2(size_t timer_id, void * user_data)
 {
-    printf("100 ms timer expired. (%d)\n", timer_id);
+    printf("100 ms timer expired. (%ld)\n", timer_id);
 }
 
 void time_handler3(size_t timer_id, void * user_data)
 {
-    printf("2000 ms timer expired. (%d)\n", timer_id);
+    printf("2000 ms timer expired. (%ld)\n", timer_id);
 }
 
 void main()
